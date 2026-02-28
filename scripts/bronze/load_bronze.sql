@@ -1,9 +1,8 @@
--- Загрузка данных на слой bronze из csv
-
-COPY bronze.crm_cust_info  
+-- Загрузка данных в слой bronze с указанием столбцов
+COPY bronze.crm_cust_info (id, first_name, last_name, email) 
 FROM '/datasets/crm_customers.csv' 
 WITH (FORMAT csv, HEADER true, DELIMITER ',');
 
-COPY bronze.erp_sales_rev 
+COPY bronze.erp_sales_rev (order_id, customer_id, order_date, amount) 
 FROM '/datasets/erp_sales.csv' 
 WITH (FORMAT csv, HEADER true, DELIMITER ',');
